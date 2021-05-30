@@ -29,8 +29,7 @@ When we run summary statistics for the dataset as a whole, we get the following 
 
 
 
- 
-                        Lot 1             Lot 2         Lot 3 
+Lot 1             Lot 2         Lot 3 
 Mean =                1500.018          1499.571      1499.004 
 Median =              1500.206          1498.873      1497.981 
 Standard Deviation =     1.071             3.183      14.833 
