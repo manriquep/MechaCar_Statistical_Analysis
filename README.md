@@ -1,51 +1,46 @@
-# **BikeSharing**
+MechaCar_Statistical_Analysis
+Background
+The client is asking for a statistical analysis of MechaCar due to its production troubles which is blocking the manufacturing team's progress.
+Purpose
+The purpose of this analysis is to predict the mpg of MechaCar prototypes, collect summary statistics on the pounds per square inch(PSI) of the suspension coils, and determine if the manufacturing lots are statistically different from the mean population.
+Linear Regression to Predict MPG
+Running a multiple linear regression model with all of our variables in the dataset we get an r-squared value of 0.715 and a p-value (5.35e-11).  The p-value well below our alpha of 0.05 (assumed 95% confidence level) allows us to reject the null hypothesis that the slope of the linear model is zero (m=0).  We can interpret the statistical significance of each of the variables in the summary table by comparing their probabilities (Pr(>|t|) in the output) to alpha = 0.05.  Probabilities less than alpha are statistically significant, meaning that they have a significant relationship with the dependent variable (mpg) and are statistically unlikely to be random variation.  In our dataset, the variables that are providing non-random variation are:  vehicle length, ground clearance, and intercept.  The fact that the intercept is statistically significant tells us that there are other factors contributing to the variation of our model that may or may not have been included.  The r-squared value of 0.715 suggests that our linear model fits roughly 71% of the data.  On the surface, this seems like a good predictor of mpg for the MechaCar prototypes.  However, it would be wise to study the residuals versus fits and residual normality plots to confirm the assumptions of the analysis. 
+Summary Statistics on Suspension Coils
+When we run summary statistics for the dataset as a whole, we get the following output:
 
-**Overview of the analysis**
 
-**Purpose**
+Mean = 1499.531
+Median = 1499.747
+Standard Deviation = 8.731242
+Variance = 76.23459 
 
-To gather and analyze data for the bikesharing company in NY, so that we can use that data and plan a bikesharing business in Desmoines.
 
-**Results**
+At first glance, this suggests the current manufacturing data meets the design specification that the variance of the suspension coils must not exceed 100 psi.  However, if we run code to group by Manufacturing Lot the data tells another story.  From the grouped data, Manufacturing Lot 3 would be rejected and root cause would need to be investigated and counter measured since the variance is well above our limit of 100 psi.   
 
-![](RackMultipart20210521-4-8nnxrl_html_f0fefbe3df740527.png)
 
-**These are the most popular starting points in NYC Bike checkout.**
+                                                 Lot 1                               Lot 2                        Lot 3
+Mean =                                          1500.018                         1499.571                       1499.004        
+Median =                                        1500.206                         1498.873                       1497.981
+Standard Deviation =                               1.071                            3.183                         14.833
+Variance =                                         1.146                           10.132                        220.011
 
-![](RackMultipart20210521-4-8nnxrl_html_cbcfc3ede0dee78.png)
+T-Tests on Suspension Coils
+We use the one-sample t-test to assert if there is a statistical difference between the means of the sample dataset and hypothesized, potential population dataset by examining the following hypotheses:
 
-These are the popular ending spots for NYC bike renters.
 
-![](RackMultipart20210521-4-8nnxrl_html_52943fd986eb7c33.png)
+Ho : There is no statistical difference between the observed sample mean and its presumed population mean.
+Ha : There is a statistical difference between the observed sample mean and its presumed population mean.
 
-Based on this chart, 5 minutes has the most amount of bike check outs with 146,752 bikes.
 
-![](RackMultipart20210521-4-8nnxrl_html_32edf5227918ef66.png)
+When running the t-Test with our script, we get a p-value of 0.5117, well above an alpha of 0.05 (assuming a 95% confidence level).  Thus, we fail to reject the null hypothesis and we can conclude that the sample mean of 1499.531 and the desired population mean of 1500 are statistically similar.
+Further Study
+A couple of the most important aspects of auto ownership are quality and reliability.  Consumers are very conscience of these factors across automotive brands.  As consumers have good experiences with vehicles, they tend to stick with that manufacturer for future purchases.  The initial quality upon purchase tells the consumer a lot about the brand.  The JD Power Initial Quality Study (IQS) is a great metric to benchmark.  Manufacturers are ranked by Problems per 100 Vehicles (PPH) in the first 90 days of ownership.  We would need to compile all defects for the prototype MechaCars and calculate the PPH.  This could be compared to the mean of the data from the latest JD Power IQS.  Is our PPH statistically similar to the mean of the JD Power IQS?  Where would the MechaCar rank in the study at this prototype level?  Since we will not have 3 year data for our prototypes, it would be difficult to look at reliability but perhaps initial quality translates to 3 year reliability. 
 
-Males are at 108,087 with 5 minute bike rentals.
 
-Females are at 34,151 with 6 minutes bike rental.
+The hypotheses we will test are: 
 
-You can see that even though males have the most bike rentals vs females they like to take shorter trips.
+Ho : There is no statistical difference between the PPH observed for the MechaCar prototypes sample and the mean of the JD Power IQS data.
+Ha : There is a statistical difference between the PPH observed for the MechaCar prototypes sample and the mean of the JD Power IQS data.
 
-![](RackMultipart20210521-4-8nnxrl_html_38da9a153d470251.png)
 
-Based on this chart, Monday, Tuesday and Thursday between 5 and 6pm have the most bikes checked out. While Thursday also has 8am busy as well.
-
-![](RackMultipart20210521-4-8nnxrl_html_2dd5139330fefad8.png)The chart above shows thatMondays and Tuesdays have the most checkout times for both male and female at 8 and 9 am as well as 5 and 6 pm.
-
-![](RackMultipart20210521-4-8nnxrl_html_ea96d8f57a29d794.png)
-
-This chart shows thatMale subscribers have the most amount of bike checkouts throughout the week, when compared to females.
-
-Also, Both female and male users remained constant throughout the week.
-
-![](RackMultipart20210521-4-8nnxrl_html_650a708a66f19e0f.png)
-
-The chart above shows the top ending locations.
-
-**Summary**
-
-Based in these analyses, there is a high demand for bike rentals. With both male and females renting out bikes at a fast rate. The most popular time is Monday, Tuesday and Thursdays. With Monday and Tuesday at 8, 9 am and 5,6 pm. Thursdays with 8 am and 5,6 pm. This is all throughout the month of August which has warm weather perfect for biking.
-
-I would suggest doing a visualization of weather patterns throughout the year to see which month is adequate for bike riding. I would also suggest a traffic patter visualization to keep track on heavy traffic to avoid during bike riding sessions.
+We could use a two-sample t-Test to compare our PPH data to the mean of all manufacturers in the IQS.  This comparison would still be sample to sample since we do not have a true sense of the entire population of data.  Thus, the two-sample t-Test is used rather than the one-sample t-Test.  
