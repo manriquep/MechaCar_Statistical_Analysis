@@ -18,15 +18,15 @@ Running a multiple linear regression model with all of our variables in the data
 
 The current manufacturing data meets the design specification that the variance of the suspension coils must not exceed 100 psi. However, if we run code to group by Manufacturing Lot the data tells another story. From the grouped data, Manufacturing Lot 3 would be rejected, and root cause would need to be investigated and counter measured since the variance is well above our limit of 100 psi.
 
-                          Lot 1        Lot 2       Lot 3
+                           Lot 1        Lot 2       Lot 3
 
-    Mean =               1500.018    1499.571    1499.004
+    Mean =               1500.00    1500.20    1496.14
 
-    Median =             1500.206    1498.873    1497.981
+    Median =             1500.00    1500.00    1498.5
 
-    Standard Deviation =    1.071       3.183      14.833
+    Standard Deviation =     .97       7.469    170.286
 
-    Variance =              1.146       10.132    220.011
+    Variance =               .98       2.733     13.049
 
 \*\*T-Tests on Suspension Coils\*\*
 
