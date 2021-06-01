@@ -15,17 +15,8 @@ Running a multiple linear regression model with all of our variables in the data
 
 \*\*Summary Statistics on Suspension Coils\*\*
 
-When we run summary statistics for the dataset as a whole, we get the following output:
 
-Mean = 1499.531
-
-Median = 1499.747
-
-Standard Deviation = 8.731242
-
-Variance = 76.23459
-
-At first glance, this suggests the current manufacturing data meets the design specification that the variance of the suspension coils must not exceed 100 psi. However, if we run code to group by Manufacturing Lot the data tells another story. From the grouped data, Manufacturing Lot 3 would be rejected, and root cause would need to be investigated and counter measured since the variance is well above our limit of 100 psi.
+The current manufacturing data meets the design specification that the variance of the suspension coils must not exceed 100 psi. However, if we run code to group by Manufacturing Lot the data tells another story. From the grouped data, Manufacturing Lot 3 would be rejected, and root cause would need to be investigated and counter measured since the variance is well above our limit of 100 psi.
 
                           Lot 1        Lot 2       Lot 3
 
